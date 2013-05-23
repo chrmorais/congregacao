@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.db import models
 
 from model_utils.models import TimeStampedModel
@@ -5,6 +8,11 @@ from model_utils.models import TimeStampedModel
 class Congregacao(models.Model):
     numero = models.IntegerField()
     nome = models.CharField(max_length=70)
+
+    class Meta:
+        db_table = 'congregacao'
+        verbose_name = 'congregação'
+        verbose_name_plural = 'congregações'
 
 class Grupo(models.Model):
     congregacao = models.ForeignKey(Congregacao)
@@ -27,3 +35,4 @@ class Publicador(TimeStampedModel):
 
     class Meta:
         db_table = 'publicador'
+        verbose_name_plural = 'publicadores'
