@@ -2,7 +2,12 @@ from django.db import models
 
 from model_utils.models import TimeStampedModel
 
+class Congregacao(models.Model):
+    numero = models.IntegerField()
+    nome = models.CharField(max_length=70)
+
 class Grupo(models.Model):
+    congregacao = models.ForeignKey(Congregacao)
     nome = models.CharField(max_length=50)
 
     class Meta:
