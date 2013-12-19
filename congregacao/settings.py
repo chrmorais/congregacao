@@ -113,9 +113,7 @@ ROOT_URLCONF = 'congregacao.urls'
 WSGI_APPLICATION = 'congregacao.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT.child('templates'),
 )
 
 INSTALLED_APPS = (
@@ -126,17 +124,23 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
+    'registration',
     'main',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
 
-EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+# Setting for django-registration
+ACCOUNT_ACTIVATION_DAYS = 30
+
+#EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
 EMAIL_HOST= 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+#EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
