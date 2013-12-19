@@ -1,5 +1,6 @@
 # Django settings for congregacao project.
 
+import os
 from unipath import Path
 
 PROJECT_ROOT = Path(__file__).ancestor(2)
@@ -130,6 +131,12 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+EMAIL_HOST= 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
