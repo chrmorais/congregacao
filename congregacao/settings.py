@@ -66,7 +66,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = PROJECT_ROOT.child('static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -74,9 +74,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_ROOT.child('main', 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -135,7 +133,9 @@ INSTALLED_APPS = (
 
 # Setting for django-registration
 ACCOUNT_ACTIVATION_DAYS = 30
+LOGIN_REDIRECT_URL = '/'
 
+DEFAULT_FROM_EMAIL = 'rickduarte@gmail.com'
 #EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
 EMAIL_HOST= 'smtp.sendgrid.net'
 EMAIL_PORT = 587

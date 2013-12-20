@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Congregação</title>
+    {% block css %}
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+    {% endblock css %}
+</head>
+<body>
+{% block content %}
+{% endblock content %}
+
+{% block js %}
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+{% endblock js %}
+
+{% block extra %}
+{% endblock extra %}
+</body>
+</html>
