@@ -27,16 +27,19 @@ class Grupo(models.Model):
 class Publicador(TimeStampedModel):
     grupo = models.ForeignKey(Grupo)
     nome = models.CharField(max_length=100)
+    nome_curto = models.CharField(max_length=50)
     ESCOLHAS_SEXO = (('M', 'Masculino'), ('F', 'Feminino'),)
     sexo = models.CharField(max_length=1, choices=ESCOLHAS_SEXO)
-    endereco = models.CharField(max_length=150)
-    telefone = models.CharField(max_length=15)
-    celular = models.CharField(max_length=15)
-    nascimento = models.DateField()
-    batismo = models.DateField()
+    endereco = models.CharField(max_length=150, null=True)
+    telefone = models.CharField(max_length=15, null=True)
+    celular = models.CharField(max_length=15, null=True)
+    nascimento = models.DateField(null=True)
+    batismo = models.DateField(null=True)
     anciao = models.BooleanField(default=False)
     servo_ministerial = models.BooleanField(default=False)
     pioneiro_regular = models.BooleanField(default=False)
+    ESCOLHAS_TIPO = (('E', 'Estudante'), ('P', 'Publicador'), ('D', 'Desassociado'), ('I', 'Inativo'),)
+    tipo = models.CharField(max_length=1)
 
     class Meta:
         db_table = 'publicador'
