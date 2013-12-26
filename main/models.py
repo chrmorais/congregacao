@@ -14,8 +14,11 @@ class Congregacao(models.Model):
         verbose_name = 'congregação'
         verbose_name_plural = 'congregações'
 
+    def __unicode__(self):
+        return self.nome
+
 class Grupo(models.Model):
-    congregacao = models.ForeignKey(Congregacao)
+    congregacao = models.ForeignKey(Congregacao, verbose_name='Congregação')
     nome = models.CharField(max_length=50)
 
     class Meta:
@@ -24,6 +27,8 @@ class Grupo(models.Model):
 class Publicador(TimeStampedModel):
     grupo = models.ForeignKey(Grupo)
     nome = models.CharField(max_length=100)
+    ESCOLHAS_SEXO = (('M', 'Masculino'), ('F', 'Feminino'),)
+    sexo = models.CharField(max_length=1, choices=ESCOLHAS_SEXO)
     endereco = models.CharField(max_length=150)
     telefone = models.CharField(max_length=15)
     celular = models.CharField(max_length=15)
